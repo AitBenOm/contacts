@@ -39,9 +39,16 @@ return  contactRepository.chercher("%"+mc+"%",new PageRequest(page, size));
 
     @RequestMapping(value = "/contacts/{id}", method = RequestMethod.PUT)
     public Contact saveContact(@PathVariable Long id,@RequestBody Contact contact){
-   contact.setId(id); ;
+   contact.setId(id);
         return  contactRepository.save(contact);
     }
+
+    @RequestMapping(value = "/contacts", method = RequestMethod.POST)
+    public Contact saveContact(@RequestBody Contact contact){
+        return  contactRepository.save(contact);
+    }
+
+
     @RequestMapping(value = "/contacts/{id}", method = RequestMethod.DELETE)
     public boolean deleteetContact(@PathVariable Long id){
        contactRepository.delete(id);
